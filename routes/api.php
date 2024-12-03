@@ -1,14 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AllController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\CaraOrderController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HargaController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\KeunggulanController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ManfaatController;
 use App\Http\Controllers\MediaPartnerController;
 use App\Http\Controllers\SyaratKetentuanController;
@@ -31,6 +33,15 @@ Route::group([
 
         });
     });
+});
+
+Route::group([
+    'prefix' => 'all'
+], function () {
+    Route::get('list', [AllController::class, 'list']);
+    // Route::post('create', [AllController::class, 'create']);
+    // Route::post('update/{id}', [AllController::class, 'update']);
+    // Route::delete('delete/{id}', [AllController::class, 'delete']);
 });
 
 Route::group([
@@ -79,6 +90,15 @@ Route::group([
 });
 
 Route::group([
+    'prefix' => 'harga'
+], function () {
+    Route::get('list', [HargaController::class, 'list']);
+    Route::post('create', [HargaController::class, 'create']);
+    Route::post('update/{id}', [HargaController::class, 'update']);
+    Route::delete('delete/{id}', [HargaController::class, 'delete']);
+});
+
+Route::group([
     'prefix' => 'syarat-ketentuan'
 ], function () {
     Route::get('list', [SyaratKetentuanController::class, 'list']);
@@ -112,4 +132,22 @@ Route::group([
     Route::post('create', [FaqController::class, 'create']);
     Route::post('update/{id}', [FaqController::class, 'update']);
     Route::delete('delete/{id}', [FaqController::class, 'delete']);
+});
+
+Route::group([
+    'prefix' => 'layanan'
+], function () {
+    Route::get('list', [LayananController::class, 'list']);
+    Route::post('create', [LayananController::class, 'create']);
+    Route::post('update/{id}', [LayananController::class, 'update']);
+    Route::delete('delete/{id}', [LayananController::class, 'delete']);
+});
+
+Route::group([
+    'prefix' => 'kontak'
+], function () {
+    Route::get('list', [KontakController::class, 'list']);
+    Route::post('create', [KontakController::class, 'create']);
+    Route::post('update/{id}', [KontakController::class, 'update']);
+    Route::delete('delete/{id}', [KontakController::class, 'delete']);
 });
