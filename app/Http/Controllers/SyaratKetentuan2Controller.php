@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TentangKami;
+use App\Models\SyaratKetentuan2;
 use Illuminate\Http\Request;
 
-class TentangKamiController extends Controller
+class SyaratKetentuan2Controller extends Controller
 {
 
     public function list()
     {
         try {
-            $data = TentangKami::get();
+            $data = SyaratKetentuan2::get();
             return response()->json(['id' => '1', 'data' => $data]);
         } catch (\Throwable $th) {
             return response()->json(['id' => '0', 'data' => $th->getMessage()]);
@@ -24,25 +24,11 @@ class TentangKamiController extends Controller
             $validatedData = $request->validate([
                 'header' => 'required',
                 'isi' => 'required',
-                'visi' => 'required',
-                'misi' => 'required',
-                'nilai_perusahaan' => 'required',
-                'project_complete' => 'required',
-                'happy_client' => 'required',
-                'awards_winning' => 'required',
-                'success_rate' => 'required',
             ]);
 
-            $data = TentangKami::create([
+            $data = SyaratKetentuan2::create([
                 'header' => $validatedData['header'],
                 'isi' => $validatedData['isi'],
-                'visi' => $validatedData['visi'],
-                'misi' => $validatedData['misi'],
-                'nilai_perusahaan' => $validatedData['nilai_perusahaan'],
-                'project_complete' => $validatedData['project_complete'],
-                'happy_client' => $validatedData['happy_client'],
-                'awards_winning' => $validatedData['awards_winning'],
-                'success_rate' => $validatedData['success_rate'],
             ]);
 
             return response()->json(['id' => '1', 'data' => $data]);
@@ -57,25 +43,11 @@ class TentangKamiController extends Controller
             $validatedData = $request->validate([
                 'header' => 'required',
                 'isi' => 'required',
-                'visi' => 'required',
-                'misi' => 'required',
-                'nilai_perusahaan' => 'required',
-                'project_complete' => 'required',
-                'happy_client' => 'required',
-                'awards_winning' => 'required',
-                'success_rate' => 'required',
             ]);
 
-            $data = TentangKami::where('id', $id)->update([
+            $data = SyaratKetentuan2::where('id', $id)->update([
                 'header' => $validatedData['header'],
                 'isi' => $validatedData['isi'],
-                'visi' => $validatedData['visi'],
-                'misi' => $validatedData['misi'],
-                'nilai_perusahaan' => $validatedData['nilai_perusahaan'],
-                'project_complete' => $validatedData['project_complete'],
-                'happy_client' => $validatedData['happy_client'],
-                'awards_winning' => $validatedData['awards_winning'],
-                'success_rate' => $validatedData['success_rate'],
             ]);
 
             return response()->json(['id' => '1', 'data' => $data]);
@@ -87,7 +59,7 @@ class TentangKamiController extends Controller
     public function delete($id)
     {
         try {
-            $data = TentangKami::find($id);
+            $data = SyaratKetentuan2::find($id);
             if ($data) {
                 $data->delete();
                 return response()->json(['id' => '1', 'data' => $data]);

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaraOrderController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HargaController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ManfaatController;
 use App\Http\Controllers\MediaPartnerController;
+use App\Http\Controllers\SyaratKetentuan2Controller;
 use App\Http\Controllers\SyaratKetentuanController;
 use App\Http\Controllers\TentangKamiController;
 
@@ -38,20 +40,25 @@ Route::group([
 Route::group([
     'prefix' => 'all'
 ], function () {
-    Route::get('list', [AllController::class, 'list']);
+    Route::get('home', [AllController::class, 'home']);
+    Route::get('about', [AllController::class, 'about']);
+    Route::get('syarat', [AllController::class, 'syarat']);
+    Route::get('paket', [AllController::class, 'paket']);
+    Route::get('blog', [AllController::class, 'blog']);
+    Route::get('detail-blog/{id}', [AllController::class, 'detailBlog']);
     // Route::post('create', [AllController::class, 'create']);
     // Route::post('update/{id}', [AllController::class, 'update']);
     // Route::delete('delete/{id}', [AllController::class, 'delete']);
 });
 
-Route::group([
-    'prefix' => 'beranda'
-], function () {
-    Route::get('list', [BerandaController::class, 'list']);
-    Route::post('create', [BerandaController::class, 'create']);
-    Route::post('update/{id}', [BerandaController::class, 'update']);
-    Route::delete('delete/{id}', [BerandaController::class, 'delete']);
-});
+// Route::group([
+//     'prefix' => 'beranda'
+// ], function () {
+//     Route::get('list', [BerandaController::class, 'list']);
+//     Route::post('create', [BerandaController::class, 'create']);
+//     Route::post('update/{id}', [BerandaController::class, 'update']);
+//     Route::delete('delete/{id}', [BerandaController::class, 'delete']);
+// });
 
 Route::group([
     'prefix' => 'info'
@@ -108,6 +115,15 @@ Route::group([
 });
 
 Route::group([
+    'prefix' => 'syarat-ketentuan-dua'
+], function () {
+    Route::get('list', [SyaratKetentuan2Controller::class, 'list']);
+    Route::post('create', [SyaratKetentuan2Controller::class, 'create']);
+    Route::post('update/{id}', [SyaratKetentuan2Controller::class, 'update']);
+    Route::delete('delete/{id}', [SyaratKetentuan2Controller::class, 'delete']);
+});
+
+Route::group([
     'prefix' => 'media-partner'
 ], function () {
     Route::get('list', [MediaPartnerController::class, 'list']);
@@ -150,4 +166,13 @@ Route::group([
     Route::post('create', [KontakController::class, 'create']);
     Route::post('update/{id}', [KontakController::class, 'update']);
     Route::delete('delete/{id}', [KontakController::class, 'delete']);
+});
+
+Route::group([
+    'prefix' => 'blog'
+], function () {
+    Route::get('list', [BlogController::class, 'list']);
+    Route::post('create', [BlogController::class, 'create']);
+    Route::post('update/{id}', [BlogController::class, 'update']);
+    Route::delete('delete/{id}', [BlogController::class, 'delete']);
 });

@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('header');
             $table->text('isi');
+            $table->text('visi');
+            $table->text('misi');
+            $table->text('nilai_perusahaan');
             $table->text('project_complete');
             $table->text('happy_client');
             $table->text('awards_winning');

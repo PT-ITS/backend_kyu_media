@@ -22,11 +22,15 @@ class LayananController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'layanan' => 'required',
+                'header' => 'required',
+                'isi' => 'required',
+                'footer' => 'required',
             ]);
 
             $data = Layanan::create([
-                'layanan' => $validatedData['layanan'],
+                'header' => $validatedData['header'],
+                'isi' => $validatedData['isi'],
+                'footer' => $validatedData['footer'],
             ]);
 
             return response()->json(['id' => '1', 'data' => $data]);
@@ -39,11 +43,15 @@ class LayananController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'layanan' => 'required',
+                'header' => 'required',
+                'isi' => 'required',
+                'footer' => 'required',
             ]);
 
             $data = Layanan::where('id', $id)->update([
-                'layanan' => $validatedData['layanan'],
+                'header' => $validatedData['header'],
+                'isi' => $validatedData['isi'],
+                'footer' => $validatedData['footer'],
             ]);
 
             return response()->json(['id' => '1', 'data' => $data]);
