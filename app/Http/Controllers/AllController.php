@@ -6,6 +6,7 @@ use App\Models\Beranda;
 use App\Models\Blog;
 use App\Models\CaraOrder;
 use App\Models\Faq;
+use App\Models\Foto;
 use App\Models\Harga;
 use App\Models\Info;
 use App\Models\Keunggulan;
@@ -25,6 +26,7 @@ class AllController extends Controller
     {
         try {
             // $beranda = Beranda::first() ?? null;
+            $foto = Foto::first() ?? null;
             $info = Info::first() ?? null;
             $manfaat = Manfaat::get()->isEmpty() ? null : Manfaat::get();
             $keunggulan = Keunggulan::get()->isEmpty() ? null : Keunggulan::get();
@@ -38,6 +40,7 @@ class AllController extends Controller
             $kontak = Kontak::get()->isEmpty() ? null : Kontak::get();
             return response()->json(['id' => '1', 'data' => [
                 // 'beranda' => $beranda,
+                'foto' => $foto,
                 'info' => $info,
                 'manfaat' => $manfaat,
                 'keunggulan' => $keunggulan,

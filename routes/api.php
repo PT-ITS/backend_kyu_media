@@ -7,6 +7,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaraOrderController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\HargaController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\KeunggulanController;
@@ -59,6 +60,15 @@ Route::group([
 //     Route::post('update/{id}', [BerandaController::class, 'update']);
 //     Route::delete('delete/{id}', [BerandaController::class, 'delete']);
 // });
+
+Route::group([
+    'prefix' => 'foto'
+], function () {
+    Route::get('list', [FotoController::class, 'list']);
+    Route::post('create', [FotoController::class, 'create']);
+    Route::post('update/{id}', [FotoController::class, 'update']);
+    Route::delete('delete/{id}', [FotoController::class, 'delete']);
+});
 
 Route::group([
     'prefix' => 'info'
